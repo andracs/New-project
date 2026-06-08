@@ -1480,7 +1480,7 @@
     const METRICS = {
       total: "Total Scope 1+2+3",
       scope1: "Scope 1",
-      scope2: "Scope 2, market-based",
+      scope2: "Scope 2, rapporteret basis",
       scope3: "Scope 3"
     };
 
@@ -1608,6 +1608,96 @@
           title: "Meta 2025 Sustainability Report",
           url: "https://sustainability.atmeta.com/2025-sustainability-report/",
           note: "Total GHG emissions with contractual instruments applied, 2020-2024."
+        }
+      },
+      {
+        id: "nvidia",
+        name: "NVIDIA",
+        color: "#76b900",
+        selected: true,
+        target: null,
+        actual: {
+          total: {2023: 3.585106, 2024: 3.690883, 2025: 6.925529},
+          scope1: {2023: 0.009672, 2024: 0.011896, 2025: 0.012952},
+          scope2: {2023: 0.060671, 2024: 0.040555, 2025: 0},
+          scope3: {2023: 3.514763, 2024: 3.638432, 2025: 6.912577}
+        },
+        source: {
+          title: "NVIDIA Sustainability Report FY2025",
+          url: "https://images.nvidia.com/aem-dam/Solutions/documents/NVIDIA-Sustainability-Report-Fiscal-Year-2025.pdf",
+          note: "FY23-FY25 GHG emissions. NVIDIA reports 100% renewable electricity in FY25 and SBTi targets, but the headline target is Scope 1+2 and Scope 3 intensity, not a simple total Scope 1+2+3 net-zero path."
+        }
+      },
+      {
+        id: "samsung",
+        name: "Samsung Electronics",
+        color: "#0f6fbd",
+        selected: true,
+        target: null,
+        actual: {
+          total: {2022: 131.013, 2023: 120.262, 2024: 120.501},
+          scope1: {2022: 5.972, 2023: 3.733, 2024: 4.725},
+          scope2: {2022: 9.081, 2023: 9.558, 2024: 10.164},
+          scope3: {2022: 115.96, 2023: 106.971, 2024: 105.612}
+        },
+        source: {
+          title: "Samsung Electronics Sustainability Report 2025",
+          url: "https://www.samsung.com/global/sustainability/media/pdf/Samsung_Electronics_Sustainability_Report_2025_ENG.pdf",
+          note: "2022-2024 market-based Scope 1+2 and Scope 3. Samsung's formal net-zero deadlines differ by division: DX Scope 1+2 by 2030 and DS Scope 1+2 by 2050."
+        }
+      },
+      {
+        id: "alibaba",
+        name: "Alibaba",
+        color: "#f28c20",
+        selected: true,
+        target: null,
+        actual: {
+          total: {2024: 12.072, 2025: 10.25149},
+          scope1: {2025: 0.474324},
+          scope2: {2025: 1.920925},
+          scope3: {2024: 7.623, 2025: 7.856241}
+        },
+        source: {
+          title: "Alibaba Group ESG Report / FY2025 Annual Report",
+          url: "https://www.alibabagroup.com/en-US/esg",
+          note: "FY2025 latest Scope 1, Scope 2 and Scope 3 data. FY2024 total combines reported own-operation emissions with Scope 3 estimated from reported intensity and revenue, so Alibaba is less directly comparable than Samsung/Tencent/Baidu."
+        }
+      },
+      {
+        id: "tencent",
+        name: "Tencent",
+        color: "#00a6a6",
+        selected: true,
+        target: null,
+        actual: {
+          total: {2022: 5.739724, 2023: 5.793824, 2024: 6.05661},
+          scope1: {2022: 0.172138, 2023: 0.275374, 2024: 0.121466},
+          scope2: {2022: 2.650073, 2023: 2.561328, 2024: 2.863849},
+          scope3: {2022: 2.917513, 2023: 2.957122, 2024: 3.071295}
+        },
+        source: {
+          title: "Tencent ESG Report 2024",
+          url: "https://www.tencent.com/en-us/esg/esg-reports.html",
+          note: "2022-2024 market-based Scope 1+2+3 data, third-party verified according to Tencent's ESG key performance table."
+        }
+      },
+      {
+        id: "baidu",
+        name: "Baidu",
+        color: "#234c9f",
+        selected: true,
+        target: null,
+        actual: {
+          total: {2022: 2.121792, 2023: 2.323459, 2024: 1.992089},
+          scope1: {2022: 0.020321, 2023: 0.020039, 2024: 0.02057},
+          scope2: {2022: 0.801942, 2023: 0.851018, 2024: 0.645058},
+          scope3: {2022: 1.299529, 2023: 1.452402, 2024: 1.326462}
+        },
+        source: {
+          title: "Baidu 2024 ESG Report",
+          url: "https://esgs.cdn.bcebos.com/2025/04/28/a2/39a2aaa4f728f4e2d0aebaff346c045e.pdf",
+          note: "2022-2024 GHG inventory. Baidu's reported Scope 3 is narrower than many western big-tech inventories and covers categories such as employee commuting and rented data-center electricity."
         }
       },
       {
@@ -1750,6 +1840,116 @@
           quoteLiteral: false,
           sourceTitle: "Meta 2025 Sustainability Report",
           url: "https://sustainability.atmeta.com/2025-sustainability-report/"
+        }
+      },
+      {
+        companyId: "nvidia",
+        status: "Scope 3 springer op",
+        statusClass: "bad",
+        promise: {
+          who: "NVIDIA",
+          when: "FY2030",
+          how: "SBTi-validerede mål: reducere Scope 1+2 med 50% fra FY23 og reducere Scope 3-intensitet fra brug af solgte GPU-produkter med 75% pr. PFLOP.",
+          quote: "reduce absolute scope 1 and 2 emissions 50% by FY30",
+          quoteLiteral: true,
+          sourceTitle: "NVIDIA Sustainability Report FY2025",
+          url: "https://images.nvidia.com/aem-dam/Solutions/documents/NVIDIA-Sustainability-Report-Fiscal-Year-2025.pdf"
+        },
+        latest: {
+          when: "FY2025",
+          summary: "NVIDIA har reduceret Scope 2 market-based til nul via 100% renewable electricity, men Scope 3 næsten fordobles fra FY24 til FY25, drevet af købt varer/tjenester i AI-hardwarekæden.",
+          quote: "Scope 3 6,912,577",
+          quoteLiteral: false,
+          sourceTitle: "NVIDIA Sustainability Report FY2025",
+          url: "https://images.nvidia.com/aem-dam/Solutions/documents/NVIDIA-Sustainability-Report-Fiscal-Year-2025.pdf"
+        }
+      },
+      {
+        companyId: "samsung",
+        status: "Meget stort Scope 3",
+        statusClass: "bad",
+        promise: {
+          who: "Samsung Electronics",
+          when: "2030 / 2050",
+          how: "DX-divisionen sigter mod net zero Scope 1+2 i 2030, mens DS/semiconductor-divisionen sigter mod Scope 1+2 net zero i 2050.",
+          quote: "net zero Scope 1 and 2 emissions",
+          quoteLiteral: true,
+          sourceTitle: "Samsung Sustainability Report 2025",
+          url: "https://www.samsung.com/global/sustainability/media/pdf/Samsung_Electronics_Sustainability_Report_2025_ENG.pdf"
+        },
+        latest: {
+          when: "2024",
+          summary: "Samsung rapporterer ca. 120,5 Mt CO2e i Scope 1+2+3 i 2024. Scope 3 alene er 105,6 Mt CO2e, især use-phase og leverandørkæde.",
+          quote: "Other indirect emissions (Scope 3) 105,612",
+          quoteLiteral: false,
+          sourceTitle: "Samsung Sustainability Report 2025",
+          url: "https://www.samsung.com/global/sustainability/media/pdf/Samsung_Electronics_Sustainability_Report_2025_ENG.pdf"
+        }
+      },
+      {
+        companyId: "alibaba",
+        status: "Partielt sammenlignelig",
+        statusClass: "missing",
+        promise: {
+          who: "Alibaba",
+          when: "2030 / 2035",
+          how: "Carbon neutrality for egne operationer Scope 1+2 i 2030, 50% reduktion i Scope 3 carbon intensity fra 2020 i 2030 og Scope 3+ økosystemreduktion på 1,5 gigaton i 2035.",
+          quote: "carbon neutrality for its own operations by 2030",
+          quoteLiteral: true,
+          sourceTitle: "Alibaba Group carbon neutrality announcement",
+          url: "https://www.businesswire.com/news/home/20211217005249/en/Alibaba-Group-Announces-Carbon-Neutrality-Goal-by-2030"
+        },
+        latest: {
+          when: "FY2025",
+          summary: "Alibaba rapporterer 2,395 Mt CO2e i egne Scope 1+2-operationer og 7,856 Mt CO2e i Scope 3. FY2024-totalen i grafen er delvist beregnet fra rapporteret intensitet og omsætning.",
+          quote: "net Scope 1+2: 2.395 Mt CO2e; Scope 3: 7.856 Mt CO2e",
+          quoteLiteral: false,
+          sourceTitle: "Alibaba FY2025 Annual Report / ESG",
+          url: "https://www.alibabagroup.com/en-US/esg"
+        }
+      },
+      {
+        companyId: "tencent",
+        status: "Stiger svagt",
+        statusClass: "bad",
+        promise: {
+          who: "Tencent",
+          when: "2030",
+          how: "Carbon neutrality i egne operationer og forsyningskæde; senere SBTi-mål inkluderer absolutte reduktioner i Scope 1+2 og Scope 3.",
+          quote: "Carbon Neutrality Target and Roadmap",
+          quoteLiteral: false,
+          sourceTitle: "Tencent carbon neutrality roadmap",
+          url: "https://www.tencent.com/attachments/carbon-neutrality/tencent-carbon-neutrality-factsheet.pdf"
+        },
+        latest: {
+          when: "2024",
+          summary: "Tencent rapporterer 6,0566 Mt CO2e i 2024, ca. 3,1% over 2021-baseline ifølge rapporteringen og lidt over 2022/2023-niveau.",
+          quote: "6,056,610.1 tCO2e",
+          quoteLiteral: false,
+          sourceTitle: "Tencent ESG Report 2024",
+          url: "https://www.tencent.com/en-us/esg/esg-reports.html"
+        }
+      },
+      {
+        companyId: "baidu",
+        status: "Lavere i 2024",
+        statusClass: "ok",
+        promise: {
+          who: "Baidu",
+          when: "2030",
+          how: "Carbon neutrality på operationsniveau med 2020 som basisår og fokus på datacentre, kontorer, cloud, intelligent transport og supply chain.",
+          quote: "achieve carbon neutrality in its operations by 2030",
+          quoteLiteral: true,
+          sourceTitle: "Baidu 2030 carbon neutrality announcement",
+          url: "https://www.prnewswire.com/news-releases/baidu-announces-goal-to-achieve-carbon-neutral-operations-by-2030-301317231.html"
+        },
+        latest: {
+          when: "2024",
+          summary: "Baidu rapporterer ca. 1,992 Mt CO2e market-based i 2024, ned fra ca. 2,323 Mt i 2023. Scope 3-definitionen er smallere end hos mange hyperscalers.",
+          quote: "Total GHG emissions (market-based)",
+          quoteLiteral: false,
+          sourceTitle: "Baidu 2024 ESG Report",
+          url: "https://esgs.cdn.bcebos.com/2025/04/28/a2/39a2aaa4f728f4e2d0aebaff346c045e.pdf"
         }
       },
       {
