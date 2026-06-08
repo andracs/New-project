@@ -457,7 +457,7 @@
     }
 
     .tooltip {
-      position: absolute;
+      position: fixed;
       min-width: 220px;
       max-width: 280px;
       padding: 10px 11px;
@@ -470,7 +470,11 @@
       opacity: 0;
       transition: opacity 120ms ease;
       font-size: 0.86rem;
-      z-index: 10;
+      z-index: 1000;
+    }
+
+    .tooltip.below {
+      transform: translate(-50%, 14px);
     }
 
     .tooltip.visible {
@@ -493,6 +497,10 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-top: 12px;
+    }
+
+    .footprint-kpis {
+      display: none;
     }
 
     .kpi {
@@ -1092,13 +1100,17 @@
     }
 
     @media (max-width: 1060px) {
-      .footprint-layout,
       .below-grid,
       .data-layout,
       .ai-dashboard,
       .promise-grid {
         grid-template-columns: 1fr;
-        grid-template-areas: "content" "sidebar";
+      }
+
+      .footprint-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+        grid-template-areas: "content sidebar";
+        gap: 14px;
       }
 
       aside {
@@ -1111,6 +1123,13 @@
 
       .legend {
         justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .footprint-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: "sidebar" "content";
       }
     }
 
@@ -1212,7 +1231,7 @@
           <select id="metricSelect" aria-label="V&aelig;lg emissionsm&aring;l">
             <option value="total">Total Scope 1+2+3</option>
             <option value="scope1">Scope 1</option>
-            <option value="scope2">Scope 2, market-based</option>
+            <option value="scope2">Scope 2, rapporteret basis</option>
             <option value="scope3">Scope 3</option>
           </select>
         </div>
@@ -1270,7 +1289,7 @@
             <svg id="chart" role="img" aria-label="CO2e-graf"></svg>
             <div class="tooltip" id="tooltip" aria-hidden="true"></div>
           </div>
-          <div class="kpi-row" id="kpis"></div>
+          <div class="kpi-row footprint-kpis" id="kpis" hidden></div>
         </section>
 
         <section class="below-grid">
@@ -1632,7 +1651,7 @@
         id: "samsung",
         name: "Samsung Electronics",
         color: "#0f6fbd",
-        selected: true,
+        selected: false,
         target: null,
         actual: {
           total: {2022: 131.013, 2023: 120.262, 2024: 120.501},
@@ -1668,7 +1687,7 @@
         id: "tencent",
         name: "Tencent",
         color: "#00a6a6",
-        selected: true,
+        selected: false,
         target: null,
         actual: {
           total: {2022: 5.739724, 2023: 5.793824, 2024: 6.05661},
@@ -2693,6 +2712,32 @@
       });
     }
 
+    function positionTooltip(tooltip, chartWrap, cx, cy) {
+      const chartBox = chartWrap.getBoundingClientRect();
+      const viewportPadding = 12;
+      const rawLeft = chartBox.left + cx;
+      const rawTop = chartBox.top + cy;
+
+      tooltip.classList.remove("below");
+      tooltip.style.left = `${rawLeft}px`;
+      tooltip.style.top = `${rawTop}px`;
+      tooltip.classList.add("visible");
+
+      const box = tooltip.getBoundingClientRect();
+      const minLeft = viewportPadding + box.width / 2;
+      const maxLeft = window.innerWidth - viewportPadding - box.width / 2;
+      const clampedLeft = maxLeft < minLeft
+        ? window.innerWidth / 2
+        : Math.min(Math.max(rawLeft, minLeft), maxLeft);
+      tooltip.style.left = `${clampedLeft}px`;
+
+      if (box.top < viewportPadding) {
+        tooltip.classList.add("below");
+      } else if (box.bottom > window.innerHeight - viewportPadding) {
+        tooltip.style.top = `${window.innerHeight - viewportPadding}px`;
+      }
+    }
+
     function showTooltip(company, point, circle) {
       const metricName = METRICS[state.metric];
       const rawValue = state.view === "index" ? point.value : point.value;
@@ -2702,15 +2747,13 @@
         <span>${state.view === "index" ? `${formatNumber(rawValue, {maximumFractionDigits: 0})} indeks` : `${formatNumber(rawValue, {maximumFractionDigits: 3})} Mt CO2e`}</span>
         <span>${point.type === "Forventet" ? modelLabel(company) : company.source.note}</span>
       `;
-      const chartBox = els.chartWrap.getBoundingClientRect();
       const cx = Number(circle.getAttribute("cx"));
       const cy = Number(circle.getAttribute("cy"));
-      els.tooltip.style.left = `${Math.min(Math.max(cx, 120), chartBox.width - 120)}px`;
-      els.tooltip.style.top = `${Math.max(cy, 88)}px`;
-      els.tooltip.classList.add("visible");
+      positionTooltip(els.tooltip, els.chartWrap, cx, cy);
     }
 
     function hideTooltip() {
+      els.tooltip.classList.remove("below");
       els.tooltip.classList.remove("visible");
     }
 
@@ -2720,44 +2763,7 @@
     }
 
     function renderKpis() {
-      const metric = state.metric;
-      const rows = selectedCompanies().flatMap((company) => visibleYears().map((year) => ({
-        company,
-        year,
-        actual: actualValue(company, year, metric),
-        expected: expectedValue(company, year, metric)
-      }))).filter((row) => row.actual != null || row.expected != null);
-
-      const actualRows = rows.filter((row) => row.actual != null);
-      const latestActualYear = actualRows.length ? Math.max(...actualRows.map((row) => row.year)) : null;
-      const latestRows = actualRows.filter((row) => row.year === latestActualYear);
-      const largest = latestRows.reduce((best, row) => !best || row.actual > best.actual ? row : best, null);
-
-      const gapRows = rows.filter((row) => row.actual != null && row.expected != null && row.year <= 2024);
-      const largestGap = gapRows.reduce((best, row) => {
-        const gap = row.actual - row.expected;
-        return !best || gap > best.gap ? {...row, gap} : best;
-      }, null);
-
-      const missing = selectedCompanies().filter((company) => company.noCompanyData).length;
-
-      els.kpis.innerHTML = `
-        <div class="kpi">
-          <div class="kpi-label">St&oslash;rste rapporterede footprint</div>
-          <div class="kpi-value">${largest ? largest.company.name : "N/A"}</div>
-          <div class="kpi-extra">${largest ? `${formatNumber(largest.actual)} Mt i ${largest.year}` : "V\u00e6lg en virksomhed med data."}</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label">St&oslash;rste afstand til forventet</div>
-          <div class="kpi-value">${largestGap ? `${formatNumber(largestGap.gap)} Mt` : "N/A"}</div>
-          <div class="kpi-extra">${largestGap ? `${largestGap.company.name}, ${largestGap.year}` : "Kr&aelig;ver b&aring;de faktisk og forventet data."}</div>
-        </div>
-        <div class="kpi">
-          <div class="kpi-label">Datamangler</div>
-          <div class="kpi-value">${missing}</div>
-          <div class="kpi-extra">${missing ? "OpenAI/Anthropic mangler &aring;rlige firmatal." : "Alle valgte har sammenlignelige data."}</div>
-        </div>
-      `;
+      els.kpis.innerHTML = "";
     }
 
     function renderTable() {
@@ -3077,15 +3083,13 @@
         <span>${point.type}</span>
         <span>${point.method}</span>
       `;
-      const chartBox = els.dataChartWrap.getBoundingClientRect();
       const cx = Number(circle.getAttribute("cx"));
       const cy = Number(circle.getAttribute("cy"));
-      els.dataTooltip.style.left = `${Math.min(Math.max(cx, 120), chartBox.width - 120)}px`;
-      els.dataTooltip.style.top = `${Math.max(cy, 88)}px`;
-      els.dataTooltip.classList.add("visible");
+      positionTooltip(els.dataTooltip, els.dataChartWrap, cx, cy);
     }
 
     function hideDataTooltip() {
+      els.dataTooltip.classList.remove("below");
       els.dataTooltip.classList.remove("visible");
     }
 
