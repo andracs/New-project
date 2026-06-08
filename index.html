@@ -945,6 +945,247 @@
       line-height: 1.45;
     }
 
+    .lifecycle-layout,
+    .location-layout,
+    .prompt-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(310px, 0.75fr);
+      gap: 14px;
+      align-items: start;
+      margin-top: 14px;
+    }
+
+    .lifecycle-map,
+    .location-map-wrap,
+    .prompt-scale-wrap,
+    .detail-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(251, 252, 250, 0.84);
+      padding: 13px;
+    }
+
+    .lifecycle-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(132px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .phase-card {
+      min-height: 260px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      padding: 11px;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 140ms ease, transform 140ms ease, background 140ms ease;
+    }
+
+    .phase-card:hover,
+    .phase-card.active {
+      border-color: rgba(20, 108, 99, 0.46);
+      background: rgba(236, 246, 241, 0.94);
+      transform: translateY(-1px);
+    }
+
+    .phase-card h3,
+    .location-card h3,
+    .prompt-stage h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .phase-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.78rem;
+    }
+
+    .phase-meter {
+      display: grid;
+      gap: 7px;
+    }
+
+    .phase-meter-row {
+      display: grid;
+      grid-template-columns: 82px 1fr auto;
+      gap: 7px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .mini-track {
+      height: 7px;
+      border-radius: 999px;
+      background: #e6ece4;
+      overflow: hidden;
+    }
+
+    .mini-fill {
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .phase-tags,
+    .location-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-content: start;
+    }
+
+    .mini-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fbfcfa;
+      color: #405249;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .detail-panel {
+      display: grid;
+      gap: 12px;
+    }
+
+    .detail-panel h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .detail-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.9rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .detail-list li {
+      border-left: 4px solid var(--accent);
+      background: rgba(20, 108, 99, 0.08);
+      border-radius: 0 7px 7px 0;
+      padding: 8px 10px;
+      color: #244238;
+      font-size: 0.84rem;
+      line-height: 1.42;
+    }
+
+    .location-map-wrap,
+    .prompt-scale-wrap {
+      position: relative;
+      height: 470px;
+      overflow: hidden;
+    }
+
+    .location-controls,
+    .prompt-controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .location-card,
+    .prompt-stage {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+    }
+
+    .location-card + .location-card,
+    .prompt-stage + .prompt-stage {
+      margin-top: 8px;
+    }
+
+    .location-metrics,
+    .prompt-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .metric-chip {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fbfcfa;
+      padding: 7px;
+      min-width: 0;
+    }
+
+    .metric-chip strong {
+      display: block;
+      line-height: 1.1;
+      font-size: 0.93rem;
+    }
+
+    .metric-chip span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.7rem;
+      line-height: 1.25;
+      margin-top: 3px;
+    }
+
+    .map-region {
+      fill: rgba(20, 108, 99, 0.08);
+      stroke: rgba(20, 108, 99, 0.22);
+      stroke-width: 1.2;
+    }
+
+    .location-point,
+    .prompt-point {
+      cursor: crosshair;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+
+    .location-label,
+    .prompt-label {
+      fill: #1d2c25;
+      font-size: 12px;
+      font-weight: 850;
+      paint-order: stroke;
+      stroke: rgba(251, 252, 250, 0.92);
+      stroke-width: 4px;
+      stroke-linejoin: round;
+    }
+
+    .prompt-band {
+      fill: rgba(20, 108, 99, 0.09);
+    }
+
+    .prompt-axis-line {
+      stroke: #aeb9b1;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
     .ai-scale-list {
       display: grid;
       gap: 14px;
@@ -1193,6 +1434,9 @@
       .data-layout,
       .ai-visual-grid,
       .ai-dashboard,
+      .lifecycle-layout,
+      .location-layout,
+      .prompt-layout,
       .promise-grid {
         grid-template-columns: 1fr;
       }
@@ -1247,7 +1491,11 @@
       .kpi-row,
       .ai-lens-controls,
       .ai-callout-grid,
-      .ai-explain-grid {
+      .ai-explain-grid,
+      .location-controls,
+      .prompt-controls,
+      .location-metrics,
+      .prompt-metrics {
         grid-template-columns: 1fr;
       }
 
@@ -1275,7 +1523,9 @@
       }
 
       .ai-scenario-wrap,
-      .ai-sankey-wrap {
+      .ai-sankey-wrap,
+      .location-map-wrap,
+      .prompt-scale-wrap {
         height: 360px;
       }
 
@@ -1307,6 +1557,9 @@
       <button type="button" class="tab-button" data-tab-target="promises">L&oslash;fter vs nyeste</button>
       <button type="button" class="tab-button" data-tab-target="data-centres">Datacentre & brancher</button>
       <button type="button" class="tab-button" data-tab-target="ai-resources">AI's ressourceforbrug</button>
+      <button type="button" class="tab-button" data-tab-target="ai-lifecycle">Livscyklus</button>
+      <button type="button" class="tab-button" data-tab-target="ai-location">Lokationskort</button>
+      <button type="button" class="tab-button" data-tab-target="ai-scale">Prompt til sektor</button>
     </nav>
 
     <section class="view-panel active" id="panel-footprint" data-tab-panel="footprint">
@@ -1592,6 +1845,106 @@
         <div class="method-box">
           Datagrundlag: per-prompt-tal er leverandørmålinger fra én konkret modeltype og kan ikke direkte generaliseres til alle AI-systemer. Sektorprognoserne er scenarier, fordi efterspørgsel, modelarkitektur, chip-effektivitet og elnet er usikre.
         </div>
+      </section>
+    </section>
+
+    <section class="wide-panel view-panel" id="panel-ai-lifecycle" data-tab-panel="ai-lifecycle">
+      <section class="chart-panel" aria-label="AI-livscyklus">
+        <div class="chart-top">
+          <div>
+            <h2>Livscyklus-kort: hvor AI-forbruget opstår</h2>
+            <p class="chart-copy">
+              Kortet deler AI-systemet op i træning, inferens, køling, hardware og forsyningskæde.
+              Hver fase viser datastyrke og usikkerhed, fordi nogle led er målt direkte, mens andre kun kan estimeres via scenarier.
+            </p>
+          </div>
+        </div>
+        <div class="lifecycle-layout">
+          <div class="lifecycle-map" id="lifecycleMap" aria-label="Livscyklusfaser"></div>
+          <aside class="detail-panel" aria-label="Livscyklusdetalje">
+            <h3 id="lifecycleDetailTitle"></h3>
+            <p id="lifecycleDetailCopy"></p>
+            <ul class="detail-list" id="lifecycleDetailList"></ul>
+            <div class="method-box" id="lifecycleMethod"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="notes-panel" aria-label="Livscykluskilder">
+        <div class="panel-head">
+          <h2>Kilder</h2>
+          <span>Google, IEA, Nature, virksomhedsrapporter</span>
+        </div>
+        <ul class="source-list" id="lifecycleSourceList"></ul>
+      </section>
+    </section>
+
+    <section class="wide-panel view-panel" id="panel-ai-location" data-tab-panel="ai-location">
+      <section class="chart-panel" aria-label="AI-lokationskort">
+        <div class="chart-top">
+          <div>
+            <h2>Lokationskort: samme AI-forbrug i forskellige elnet</h2>
+            <p class="chart-copy">
+              Vælg samme antal tekstprompts og se, hvordan CO2-aftrykket ændrer sig med elnettet.
+              Vanddelen vises som fysisk prompt-vand efter Googles metode plus en separat vandstressmarkør fra WRI.
+            </p>
+          </div>
+        </div>
+        <div class="location-layout">
+          <div class="location-map-wrap" id="locationMapWrap">
+            <svg id="locationMap" role="img" aria-label="AI-lokationskort"></svg>
+            <div class="tooltip" id="locationTooltip" aria-hidden="true"></div>
+          </div>
+          <aside class="detail-panel" aria-label="Lokationsscenarier">
+            <div class="location-controls" id="locationWorkloadControls" aria-label="Vælg AI-workload"></div>
+            <div id="locationCards"></div>
+            <div class="method-box">
+              <strong>Antagelse:</strong> Workloaden bruger Googles mediane tekstprompt-tal: 0,24 Wh og 0,26 ml vand pr. prompt.
+              CO2 genberegnes med regionale el-intensiteter; vandstress er en risikomarkør, ikke ekstra fysisk vandforbrug.
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="notes-panel" aria-label="Lokationskilder">
+        <div class="panel-head">
+          <h2>Kilder</h2>
+          <span>Google, EIA/IEA/Ember, WRI</span>
+        </div>
+        <ul class="source-list" id="locationSourceList"></ul>
+      </section>
+    </section>
+
+    <section class="wide-panel view-panel" id="panel-ai-scale" data-tab-panel="ai-scale">
+      <section class="chart-panel" aria-label="Fra prompt til sektor">
+        <div class="chart-top">
+          <div>
+            <h2>Fra prompt til sektor</h2>
+            <p class="chart-copy">
+              En logaritmisk skala fra én tekstprompt til millioner, milliarder og globalt datacenterforbrug.
+              Pointen er at vise, hvornår mikro-effektivitet drukner i volumen og infrastruktur.
+            </p>
+          </div>
+        </div>
+        <div class="prompt-layout">
+          <div class="prompt-scale-wrap" id="promptScaleWrap">
+            <svg id="promptScaleChart" role="img" aria-label="Prompt til sektor skala"></svg>
+            <div class="tooltip" id="promptTooltip" aria-hidden="true"></div>
+          </div>
+          <aside class="detail-panel" aria-label="Promptantagelser">
+            <div class="prompt-controls" id="promptProfileControls" aria-label="Vælg promptprofil"></div>
+            <div id="promptStageCards"></div>
+            <div class="method-box" id="promptAssumptionBox"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="notes-panel" aria-label="Prompt-skala-kilder">
+        <div class="panel-head">
+          <h2>Kilder</h2>
+          <span>Google og IEA</span>
+        </div>
+        <ul class="source-list" id="promptSourceList"></ul>
       </section>
     </section>
   </main>
@@ -2606,6 +2959,252 @@
       }
     ];
 
+    const lifecycleSources = [
+      aiSources[0],
+      aiSources[2],
+      aiSources[3],
+      aiSources[4],
+      aiSources[5],
+      {
+        title: "Big-tech sustainability reports",
+        url: "https://www.microsoft.com/en-us/corporate-responsibility/sustainability/report",
+        note: "Virksomhedsrapporter bruges som indikator for, at Scope 3 og hardware-/forsyningskæder ofte dominerer totalregnskabet."
+      }
+    ];
+
+    const lifecyclePhases = [
+      {
+        id: "training",
+        title: "Træning",
+        mark: "TR",
+        color: "#7a3f98",
+        dataStrength: 2,
+        uncertainty: 5,
+        load: 3,
+        tags: ["store bursts", "modelhemmelighed", "GPU-timer"],
+        copy: "Træning er synligt i debatten, men ofte dårligt målt offentligt. Energiforbruget afhænger af modelstørrelse, træningslængde, hardwareudnyttelse og hvor meget eksperimentering der tælles med.",
+        evidence: [
+          "Få selskaber offentliggør model-for-model energiforbrug eller fuld GHG-livscyklus for træning.",
+          "Fagfællebedømte modelstudier kan give punktdata, men de er sjældent direkte sammenlignelige med firmaregnskaber.",
+          "Træning kan være stor pr. model, men inferens kan dominere over tid, hvis modellen bruges massivt."
+        ],
+        method: "Datastyrke lav-middel: konkrete modelstudier findes, men firmadata mangler ofte. Usikkerhed høj."
+      },
+      {
+        id: "inference",
+        title: "Inferens",
+        mark: "IN",
+        color: "#146c63",
+        dataStrength: 4,
+        uncertainty: 3,
+        load: 5,
+        tags: ["0,24 Wh", "volumen", "latens"],
+        copy: "Inferens er den løbende drift: hver prompt, API-kald, agent-step, billedanalyse eller videosvar. Her er per-enhedstal små, men volumen kan vokse ekstremt hurtigt.",
+        evidence: [
+          "Google måler en median Gemini Apps tekstprompt til 0,24 Wh, 0,03 gCO2e og 0,26 ml vand.",
+          "Tallet er stærkt metodestyrt og gælder ikke automatisk for alle modeller, multimodale opgaver eller udbydere.",
+          "Volumen, længere kontekster og agentiske workflows er de vigtigste usikkerheder."
+        ],
+        method: "Datastyrke højere end træning på grund af Googles fuld-stack promptmåling. Usikkerheden er stadig væsentlig på tværs af udbydere og opgavetyper."
+      },
+      {
+        id: "cooling",
+        title: "Køling",
+        mark: "KØ",
+        color: "#0b7f83",
+        dataStrength: 3,
+        uncertainty: 4,
+        load: 3,
+        tags: ["vand", "PUE/WUE", "lokation"],
+        copy: "Køling forbinder compute med vand, varme og lokal infrastruktur. Aftrykket afhænger af klima, køleteknologi, datacenterdesign og om vandforbrug ligger direkte i datacentret eller indirekte i elproduktionen.",
+        evidence: [
+          "Nature Sustainability estimerer 731-1.125 mio. m3 årligt vandaftryk for AI-servere i USA-scenarier.",
+          "Samme studie peger på, at indirekte vand fra elproduktion kan være størstedelen af vandaftrykket.",
+          "WRI-vandstress afgør, om samme m3 vand er lav eller høj lokal risiko."
+        ],
+        method: "Datastyrke middel: sektorstudier og PUE/WUE-metoder findes, men konkrete datacenterlokationer er ofte uklare."
+      },
+      {
+        id: "hardware",
+        title: "Hardware",
+        mark: "HW",
+        color: "#8b5b2f",
+        dataStrength: 3,
+        uncertainty: 4,
+        load: 4,
+        tags: ["GPU", "e-waste", "levetid"],
+        copy: "Hardware er chips, servere, netværk, lagring og udskiftningstempo. Det er ofte skjult, fordi prompt-tal kun måler drift, mens forsyningskæde og affald ligger andre steder i regnskabet.",
+        evidence: [
+          "Nature Computational Science estimerer 1,2-5,0 Mt akkumuleret generativ AI e-waste i 2020-2030 uden stærke cirkulære tiltag.",
+          "Communications Earth & Environment peger på materialekompleksitet og GPU-levetid som centrale ressourcevariable.",
+          "NVIDIA og hyperscaler Scope 3-tal viser, at hardwarekæden kan dominere totalen."
+        ],
+        method: "Datastyrke middel: der findes peer-reviewed scenarier, men hardwaremix, levetid og genbrug er stærkt scenarieafhængige."
+      },
+      {
+        id: "supply",
+        title: "Forsyningskæde",
+        mark: "S3",
+        color: "#a75916",
+        dataStrength: 3,
+        uncertainty: 5,
+        load: 5,
+        tags: ["Scope 3", "byggeri", "chips"],
+        copy: "Forsyningskæden dækker datacenterbyggeri, halvledere, servere, transport, elindkøb og leverandører. Den er svær at isolere for AI, men meget synlig i selskabernes samlede Scope 3.",
+        evidence: [
+          "Microsoft, Google, Amazon og Meta rapporterer store Scope 3-aftryk, ofte drevet af datacentre, hardware og cloud/AI-udbygning.",
+          "AI-specifikke Scope 3-tal offentliggøres sjældent særskilt.",
+          "Målet om lavere prompt-aftryk kan kollidere med hurtigere fysisk udbygning."
+        ],
+        method: "Datastyrke middel, usikkerhed meget høj: firmatal findes, men AI-andelen i Scope 3 er sjældent separeret."
+      }
+    ];
+
+    const locationWorkloads = [
+      {id: "oneMillion", label: "1 mio.", prompts: 1_000_000},
+      {id: "hundredMillion", label: "100 mio.", prompts: 100_000_000},
+      {id: "oneBillion", label: "1 mia.", prompts: 1_000_000_000}
+    ];
+
+    const locationScenarios = [
+      {
+        id: "nordic",
+        name: "Nordisk lavemissionsnet",
+        region: "lav CO2 / lav vandstress",
+        x: 475,
+        y: 116,
+        carbonIntensity: 45,
+        waterStress: "Lav",
+        waterScore: 1,
+        color: "#146c63",
+        source: "IEA/EEA emissionsfaktorer + WRI Aqueduct",
+        note: "Repræsenterer et lavemissionsnet med lavere vandstress. Konkret facilitet kan afvige."
+      },
+      {
+        id: "us",
+        name: "USA gennemsnit",
+        region: "mellem CO2 / varierende vandstress",
+        x: 232,
+        y: 168,
+        carbonIntensity: 367,
+        waterStress: "Middel",
+        waterScore: 3,
+        color: "#2450a6",
+        source: "U.S. EIA 2023: 0,81 lb CO2/kWh",
+        note: "Nationalt gennemsnit. Hyperscale-datacentre kan ligge i både renere og mere kulstofintensive elområder."
+      },
+      {
+        id: "china",
+        name: "Kina, kul-tungt net",
+        region: "høj CO2 / regional vandstress",
+        x: 673,
+        y: 185,
+        carbonIntensity: 581,
+        waterStress: "Middel-høj",
+        waterScore: 4,
+        color: "#a75916",
+        source: "Ember Global Electricity Review 2024, afrundet",
+        note: "Repræsentativt højere CO2-net. Vandstress varierer kraftigt mellem kyst, nord og vest."
+      },
+      {
+        id: "india",
+        name: "Indien, højstress-scenarie",
+        region: "høj CO2 / høj vandstress",
+        x: 626,
+        y: 242,
+        carbonIntensity: 708,
+        waterStress: "Høj",
+        waterScore: 5,
+        color: "#7a3f98",
+        source: "IEA/Ember elintensitet + WRI Aqueduct",
+        note: "Illustrerer et højere CO2-net kombineret med høj baseline-vandstress."
+      },
+      {
+        id: "contracted",
+        name: "24/7 lavemissionsmatch",
+        region: "kontraktuel lav CO2 / lokalt afhængig",
+        x: 382,
+        y: 245,
+        carbonIntensity: 25,
+        waterStress: "Afhænger af placering",
+        waterScore: 2,
+        color: "#0b7f83",
+        source: "IEA + selskabers 24/7 CFE-metoder",
+        note: "Illustrerer lav emissionsintensitet ved tids- og lokationsmatchet ren strøm; vandrisiko afhænger stadig af fysisk placering."
+      }
+    ];
+
+    const locationSources = [
+      aiSources[2],
+      {
+        title: "U.S. EIA: CO2 per kWh of U.S. electricity",
+        url: "https://www.eia.gov/tools/faqs/faq.php?id=74&t=11",
+        note: "EIA opgiver 2023-gennemsnit for USA på ca. 0,81 lb CO2 pr. kWh, svarende til ca. 367 g CO2/kWh."
+      },
+      {
+        title: "IEA Emissions Factors 2024",
+        url: "https://www.iea.org/data-and-statistics/data-product/emissions-factors-2024",
+        note: "Årlige emissionsfaktorer for elproduktion på tværs af lande; brugt som metodeanker for regionale CO2-intensiteter."
+      },
+      {
+        title: "Ember Global Electricity Review 2024",
+        url: "https://ember-climate.org/insights/research/global-electricity-review-2024/",
+        note: "Offentlig elstatistik og regionale strømintensiteter; brugt som supplerende anker for kul-tunge net-scenarier."
+      },
+      {
+        title: "World Resources Institute: Aqueduct",
+        url: "https://www.wri.org/aqueduct",
+        note: "WRI Aqueduct kortlægger baseline-vandstress og andre vandrisici globalt. Her bruges det som risikokategori, ikke som fysisk vandforbrug."
+      }
+    ];
+
+    const promptProfiles = [
+      {
+        id: "googleMedian",
+        label: "Google median",
+        energyWh: 0.24,
+        co2g: 0.03,
+        waterMl: 0.26,
+        note: "Førsteparts fuld-stack-måling for en median Gemini Apps tekstprompt."
+      },
+      {
+        id: "tenX",
+        label: "10x tungere",
+        energyWh: 2.4,
+        co2g: 0.3,
+        waterMl: 2.6,
+        note: "Illustrativ følsomhed: længere svar, flere agent-steps eller tungere model. Ikke et publiceret gennemsnit."
+      },
+      {
+        id: "hundredX",
+        label: "100x multimodal",
+        energyWh: 24,
+        co2g: 3,
+        waterMl: 26,
+        note: "Illustrativ følsomhed for meget tungere multimodale workflows. Ikke et publiceret gennemsnit."
+      }
+    ];
+
+    const promptStageTemplates = [
+      {id: "one", label: "1 prompt", prompts: 1, type: "prompt"},
+      {id: "million", label: "1 mio. prompts", prompts: 1_000_000, type: "prompt"},
+      {id: "billion", label: "1 mia. prompts", prompts: 1_000_000_000, type: "prompt"},
+      {id: "billionDay", label: "1 mia./dag i 1 år", prompts: 365_000_000_000, type: "prompt"},
+      {id: "tenBillionDay", label: "10 mia./dag i 1 år", prompts: 3_650_000_000_000, type: "prompt"},
+      {id: "dc2024", label: "Globale datacentre 2024", energyWh: 415_000_000_000_000, type: "sector", note: "IEA-estimat for alle datacentre, ikke kun AI."},
+      {id: "dc2030", label: "IEA base case 2030", energyWh: 945_000_000_000_000, type: "sector", note: "IEA base case for globalt datacenter-elforbrug."}
+    ];
+
+    const promptSources = [
+      aiSources[0],
+      aiSources[2],
+      {
+        title: "Google technical paper: Measuring AI at Google Scale",
+        url: "https://services.google.com/fh/files/misc/measuring_the_environmental_impact_of_delivering_ai_at_google_scale.pdf",
+        note: "Teknisk metodebaggrund for promptmålingen. 10x og 100x profilerne i fanen er følsomhedsantagelser, ikke Google-tal."
+      }
+    ];
+
     function readStoredFlag(key) {
       try {
         return localStorage.getItem(key) === "1";
@@ -2629,6 +3228,9 @@
       view: "absolute",
       activeTab: "footprint",
       aiLens: "power",
+      lifecyclePhase: "inference",
+      locationWorkload: "oneMillion",
+      promptProfile: "googleMedian",
       filtersHidden: readStoredFlag("filtersHidden"),
       startYear: 2020,
       endYear: 2026
@@ -2677,6 +3279,25 @@
       aiKpiRow: document.getElementById("aiKpiRow"),
       aiExplainCards: document.getElementById("aiExplainCards"),
       aiSourceList: document.getElementById("aiSourceList"),
+      lifecycleMap: document.getElementById("lifecycleMap"),
+      lifecycleDetailTitle: document.getElementById("lifecycleDetailTitle"),
+      lifecycleDetailCopy: document.getElementById("lifecycleDetailCopy"),
+      lifecycleDetailList: document.getElementById("lifecycleDetailList"),
+      lifecycleMethod: document.getElementById("lifecycleMethod"),
+      lifecycleSourceList: document.getElementById("lifecycleSourceList"),
+      locationMapWrap: document.getElementById("locationMapWrap"),
+      locationMap: document.getElementById("locationMap"),
+      locationTooltip: document.getElementById("locationTooltip"),
+      locationWorkloadControls: document.getElementById("locationWorkloadControls"),
+      locationCards: document.getElementById("locationCards"),
+      locationSourceList: document.getElementById("locationSourceList"),
+      promptScaleWrap: document.getElementById("promptScaleWrap"),
+      promptScaleChart: document.getElementById("promptScaleChart"),
+      promptTooltip: document.getElementById("promptTooltip"),
+      promptProfileControls: document.getElementById("promptProfileControls"),
+      promptStageCards: document.getElementById("promptStageCards"),
+      promptAssumptionBox: document.getElementById("promptAssumptionBox"),
+      promptSourceList: document.getElementById("promptSourceList"),
       dataTableBody: document.getElementById("dataTableBody"),
       dataSourceList: document.getElementById("dataSourceList")
     };
@@ -2750,6 +3371,37 @@
       if (value == null) return "N/A";
       if (state.view === "index") return `${formatNumber(value, {maximumFractionDigits: 0})}`;
       return `${formatNumber(value)} Mt`;
+    }
+
+    function formatEnergyWh(value) {
+      if (value >= 1_000_000_000_000) return `${formatNumber(value / 1_000_000_000_000, {maximumFractionDigits: 2})} TWh`;
+      if (value >= 1_000_000_000) return `${formatNumber(value / 1_000_000_000, {maximumFractionDigits: 2})} GWh`;
+      if (value >= 1_000_000) return `${formatNumber(value / 1_000_000, {maximumFractionDigits: 2})} MWh`;
+      if (value >= 1_000) return `${formatNumber(value / 1_000, {maximumFractionDigits: 2})} kWh`;
+      return `${formatNumber(value, {maximumFractionDigits: 2})} Wh`;
+    }
+
+    function formatMassG(value) {
+      if (value >= 1_000_000_000) return `${formatNumber(value / 1_000_000_000, {maximumFractionDigits: 2})} kt CO2e`;
+      if (value >= 1_000_000) return `${formatNumber(value / 1_000_000, {maximumFractionDigits: 2})} t CO2e`;
+      if (value >= 1_000) return `${formatNumber(value / 1_000, {maximumFractionDigits: 2})} kg CO2e`;
+      return `${formatNumber(value, {maximumFractionDigits: 2})} g CO2e`;
+    }
+
+    function formatWaterMl(value) {
+      if (value >= 1_000_000_000) return `${formatNumber(value / 1_000_000_000, {maximumFractionDigits: 2})} mio. m3`;
+      if (value >= 1_000_000) return `${formatNumber(value / 1_000_000, {maximumFractionDigits: 2})} m3`;
+      if (value >= 1_000) return `${formatNumber(value / 1_000, {maximumFractionDigits: 2})} liter`;
+      return `${formatNumber(value, {maximumFractionDigits: 2})} ml`;
+    }
+
+    function renderSourceList(target, sources) {
+      target.innerHTML = sources.map((source) => `
+        <li>
+          <a href="${source.url}" target="_blank" rel="noreferrer">${source.title}</a>
+          <p>${source.note}</p>
+        </li>
+      `).join("");
     }
 
     function selectedCompanies() {
@@ -3409,14 +4061,22 @@
       `).join("");
     }
 
+    function showHtmlTooltip(tooltip, html, event) {
+      tooltip.innerHTML = html;
+      positionFloatingTooltip(tooltip, event.clientX, event.clientY);
+    }
+
+    function hideHtmlTooltip(tooltip) {
+      tooltip.classList.remove("below");
+      tooltip.classList.remove("visible");
+    }
+
     function showAiTooltip(html, event) {
-      els.aiScenarioTooltip.innerHTML = html;
-      positionFloatingTooltip(els.aiScenarioTooltip, event.clientX, event.clientY);
+      showHtmlTooltip(els.aiScenarioTooltip, html, event);
     }
 
     function hideAiTooltip() {
-      els.aiScenarioTooltip.classList.remove("below");
-      els.aiScenarioTooltip.classList.remove("visible");
+      hideHtmlTooltip(els.aiScenarioTooltip);
     }
 
     function renderAiScenarioChart(scenario) {
@@ -3679,6 +4339,241 @@
       `).join("");
     }
 
+    function renderLifecycleMap() {
+      const selected = lifecyclePhases.find((phase) => phase.id === state.lifecyclePhase) ?? lifecyclePhases[0];
+      els.lifecycleMap.innerHTML = lifecyclePhases.map((phase) => {
+        const strengthWidth = (phase.dataStrength / 5) * 100;
+        const uncertaintyWidth = (phase.uncertainty / 5) * 100;
+        const loadWidth = (phase.load / 5) * 100;
+        return `
+          <button type="button" class="phase-card ${phase.id === selected.id ? "active" : ""}" data-lifecycle-phase="${phase.id}" aria-pressed="${phase.id === selected.id}">
+            <span class="phase-icon" style="background:${phase.color}">${phase.mark}</span>
+            <h3>${phase.title}</h3>
+            <div class="phase-meter">
+              <div class="phase-meter-row">
+                <span>Datastyrke</span>
+                <span class="mini-track"><span class="mini-fill" style="width:${strengthWidth}%; background:${phase.color}"></span></span>
+                <strong>${phase.dataStrength}/5</strong>
+              </div>
+              <div class="phase-meter-row">
+                <span>Usikkerhed</span>
+                <span class="mini-track"><span class="mini-fill" style="width:${uncertaintyWidth}%; background:#a75916"></span></span>
+                <strong>${phase.uncertainty}/5</strong>
+              </div>
+              <div class="phase-meter-row">
+                <span>Ressourcepres</span>
+                <span class="mini-track"><span class="mini-fill" style="width:${loadWidth}%; background:#5b6470"></span></span>
+                <strong>${phase.load}/5</strong>
+              </div>
+            </div>
+            <div class="phase-tags">${phase.tags.map((tag) => `<span class="mini-pill">${tag}</span>`).join("")}</div>
+          </button>
+        `;
+      }).join("");
+
+      els.lifecycleDetailTitle.textContent = selected.title;
+      els.lifecycleDetailCopy.textContent = selected.copy;
+      els.lifecycleDetailList.innerHTML = selected.evidence.map((item) => `<li>${item}</li>`).join("");
+      els.lifecycleMethod.innerHTML = `<strong>Metode:</strong> ${selected.method}`;
+      renderSourceList(els.lifecycleSourceList, lifecycleSources);
+    }
+
+    function selectedLocationWorkload() {
+      return locationWorkloads.find((item) => item.id === state.locationWorkload) ?? locationWorkloads[0];
+    }
+
+    function locationMetrics(location, workload = selectedLocationWorkload()) {
+      const energyKWh = (workload.prompts * 0.24) / 1000;
+      const co2Kg = (energyKWh * location.carbonIntensity) / 1000;
+      const waterMl = workload.prompts * 0.26;
+      const stressWeightedM3 = (waterMl / 1_000_000) * location.waterScore;
+      return {energyKWh, co2Kg, waterMl, stressWeightedM3};
+    }
+
+    function renderLocationMap() {
+      const workload = selectedLocationWorkload();
+      els.locationWorkloadControls.innerHTML = locationWorkloads.map((item) => `
+        <button type="button" class="${item.id === workload.id ? "active" : ""}" data-location-workload="${item.id}" aria-pressed="${item.id === workload.id}">
+          ${item.label}
+        </button>
+      `).join("");
+
+      const svg = els.locationMap;
+      clearSvg(svg);
+      const width = 900;
+      const height = 470;
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.appendChild(makeSvg("rect", {x: 0, y: 0, width, height, fill: "rgba(232, 240, 236, 0.72)"}));
+      [
+        {x: 80, y: 95, w: 245, h: 170, rx: 70},
+        {x: 395, y: 70, w: 175, h: 165, rx: 64},
+        {x: 560, y: 120, w: 245, h: 205, rx: 72},
+        {x: 402, y: 245, w: 95, h: 125, rx: 42},
+        {x: 655, y: 316, w: 126, h: 74, rx: 34}
+      ].forEach((shape) => svg.appendChild(makeSvg("rect", {...shape, class: "map-region"})));
+
+      const maxCo2 = Math.max(...locationScenarios.map((location) => locationMetrics(location, workload).co2Kg));
+      locationScenarios.forEach((location) => {
+        const metrics = locationMetrics(location, workload);
+        const radius = 11 + Math.sqrt(metrics.co2Kg / Math.max(0.001, maxCo2)) * 22;
+        const circle = makeSvg("circle", {
+          cx: location.x,
+          cy: location.y,
+          r: radius,
+          fill: location.color,
+          opacity: 0.84,
+          class: "location-point"
+        });
+        circle.addEventListener("mouseenter", (event) => showHtmlTooltip(els.locationTooltip, `
+          <strong>${location.name}</strong>
+          <span>${workload.label} prompts: ${formatEnergyWh(metrics.energyKWh * 1000)}</span>
+          <span>${formatNumber(metrics.co2Kg, {maximumFractionDigits: 2})} kg CO2e ved ${location.carbonIntensity} g/kWh</span>
+          <span>Vandstress: ${location.waterStress}. ${location.note}</span>
+        `, event));
+        circle.addEventListener("mousemove", (event) => showHtmlTooltip(els.locationTooltip, `
+          <strong>${location.name}</strong>
+          <span>${workload.label} prompts: ${formatEnergyWh(metrics.energyKWh * 1000)}</span>
+          <span>${formatNumber(metrics.co2Kg, {maximumFractionDigits: 2})} kg CO2e ved ${location.carbonIntensity} g/kWh</span>
+          <span>Vandstress: ${location.waterStress}. ${location.note}</span>
+        `, event));
+        circle.addEventListener("mouseleave", () => hideHtmlTooltip(els.locationTooltip));
+        svg.appendChild(circle);
+
+        const label = makeSvg("text", {x: location.x + radius + 8, y: location.y + 4, class: "location-label"});
+        label.textContent = location.name;
+        svg.appendChild(label);
+      });
+
+      const legend = makeSvg("text", {x: 24, y: 38, class: "grid-label"});
+      legend.textContent = "Boblestørrelse = CO2 for samme prompt-workload. Farver = scenarieregioner.";
+      svg.appendChild(legend);
+
+      els.locationCards.innerHTML = locationScenarios.map((location) => {
+        const metrics = locationMetrics(location, workload);
+        return `
+          <article class="location-card">
+            <h3><span class="color-dot" style="background:${location.color}"></span>${location.name}</h3>
+            <div class="location-tags">
+              <span class="mini-pill">${location.region}</span>
+              <span class="mini-pill">${location.carbonIntensity} g/kWh</span>
+              <span class="mini-pill">Vandstress: ${location.waterStress}</span>
+            </div>
+            <div class="location-metrics">
+              <div class="metric-chip"><strong>${formatEnergyWh(metrics.energyKWh * 1000)}</strong><span>samme workload</span></div>
+              <div class="metric-chip"><strong>${formatNumber(metrics.co2Kg, {maximumFractionDigits: 2})} kg</strong><span>CO2e</span></div>
+              <div class="metric-chip"><strong>${formatNumber(metrics.stressWeightedM3, {maximumFractionDigits: 2})}</strong><span>stress-vægtet m3-indikator</span></div>
+            </div>
+            <p class="data-note">${location.note}</p>
+          </article>
+        `;
+      }).join("");
+
+      renderSourceList(els.locationSourceList, locationSources);
+    }
+
+    function selectedPromptProfile() {
+      return promptProfiles.find((item) => item.id === state.promptProfile) ?? promptProfiles[0];
+    }
+
+    function promptStageValues(profile = selectedPromptProfile()) {
+      return promptStageTemplates.map((stage) => {
+        if (stage.type === "sector") return {...stage, co2g: null, waterMl: null};
+        return {
+          ...stage,
+          energyWh: stage.prompts * profile.energyWh,
+          co2g: stage.prompts * profile.co2g,
+          waterMl: stage.prompts * profile.waterMl
+        };
+      });
+    }
+
+    function renderPromptScale() {
+      const profile = selectedPromptProfile();
+      const stages = promptStageValues(profile);
+      els.promptProfileControls.innerHTML = promptProfiles.map((item) => `
+        <button type="button" class="${item.id === profile.id ? "active" : ""}" data-prompt-profile="${item.id}" aria-pressed="${item.id === profile.id}">
+          ${item.label}
+        </button>
+      `).join("");
+
+      const svg = els.promptScaleChart;
+      clearSvg(svg);
+      const width = 940;
+      const height = 470;
+      const margin = {top: 42, right: 26, bottom: 58, left: 42};
+      const innerW = width - margin.left - margin.right;
+      const xMin = -1;
+      const xMax = 15.2;
+      const xScale = (energyWh) => margin.left + ((Math.log10(energyWh) - xMin) / (xMax - xMin)) * innerW;
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.appendChild(makeSvg("rect", {x: 0, y: 0, width, height, fill: "rgba(251, 252, 250, 0.82)"}));
+      svg.appendChild(makeSvg("rect", {x: xScale(415_000_000_000_000), y: 88, width: xScale(945_000_000_000_000) - xScale(415_000_000_000_000), height: 250, class: "prompt-band"}));
+
+      const axisY = 360;
+      svg.appendChild(makeSvg("line", {x1: margin.left, x2: width - margin.right, y1: axisY, y2: axisY, class: "prompt-axis-line"}));
+      [1, 1_000, 1_000_000, 1_000_000_000, 1_000_000_000_000, 1_000_000_000_000_000].forEach((tick) => {
+        const x = xScale(tick);
+        svg.appendChild(makeSvg("line", {x1: x, x2: x, y1: axisY - 8, y2: axisY + 8, stroke: "#aeb9b1"}));
+        const label = makeSvg("text", {x, y: axisY + 30, class: "grid-label", "text-anchor": "middle"});
+        label.textContent = formatEnergyWh(tick);
+        svg.appendChild(label);
+      });
+
+      stages.forEach((stage, index) => {
+        const x = xScale(stage.energyWh);
+        const y = 86 + (index % 5) * 54;
+        const color = stage.type === "sector" ? "#a75916" : "#146c63";
+        svg.appendChild(makeSvg("line", {x1: x, x2: x, y1: y + 8, y2: axisY, stroke: color, "stroke-dasharray": stage.type === "sector" ? "7 7" : "3 6", opacity: 0.58}));
+        const circle = makeSvg("circle", {cx: x, cy: y, r: stage.type === "sector" ? 9 : 7, fill: color, class: "prompt-point"});
+        circle.addEventListener("mouseenter", (event) => showHtmlTooltip(els.promptTooltip, `
+          <strong>${stage.label}</strong>
+          <span>${formatEnergyWh(stage.energyWh)}</span>
+          <span>${stage.type === "sector" ? stage.note : `${formatMassG(stage.co2g)} og ${formatWaterMl(stage.waterMl)}`}</span>
+          <span>${profile.note}</span>
+        `, event));
+        circle.addEventListener("mousemove", (event) => showHtmlTooltip(els.promptTooltip, `
+          <strong>${stage.label}</strong>
+          <span>${formatEnergyWh(stage.energyWh)}</span>
+          <span>${stage.type === "sector" ? stage.note : `${formatMassG(stage.co2g)} og ${formatWaterMl(stage.waterMl)}`}</span>
+          <span>${profile.note}</span>
+        `, event));
+        circle.addEventListener("mouseleave", () => hideHtmlTooltip(els.promptTooltip));
+        svg.appendChild(circle);
+        const label = makeSvg("text", {
+          x: Math.min(width - 120, x + 10),
+          y: y + 4,
+          class: "prompt-label"
+        });
+        label.textContent = stage.label;
+        svg.appendChild(label);
+      });
+
+      const title = makeSvg("text", {x: margin.left, y: 26, class: "grid-label"});
+      title.textContent = "Logskala for elforbrug: punkt-tal til venstre, sektorbenchmarks til højre.";
+      svg.appendChild(title);
+
+      els.promptStageCards.innerHTML = stages.slice(0, 5).map((stage) => `
+        <article class="prompt-stage">
+          <h3>${stage.label}</h3>
+          <div class="prompt-metrics">
+            <div class="metric-chip"><strong>${formatEnergyWh(stage.energyWh)}</strong><span>el</span></div>
+            <div class="metric-chip"><strong>${formatMassG(stage.co2g)}</strong><span>CO2e</span></div>
+            <div class="metric-chip"><strong>${formatWaterMl(stage.waterMl)}</strong><span>vand</span></div>
+          </div>
+        </article>
+      `).join("");
+
+      const oneBillionDay = stages.find((stage) => stage.id === "billionDay");
+      const dc2024 = stages.find((stage) => stage.id === "dc2024");
+      const share = (oneBillionDay.energyWh / dc2024.energyWh) * 100;
+      els.promptAssumptionBox.innerHTML = `
+        <strong>Antagelse:</strong> ${profile.note}
+        Ved denne profil svarer 1 mia. prompts pr. dag i et år til ${formatEnergyWh(oneBillionDay.energyWh)}, eller ca. ${formatNumber(share, {maximumFractionDigits: 3})}% af IEA's globale datacenter-el i 2024.
+        Det inkluderer ikke træning, billed/video-generering, hardware, netværk eller reservekapacitet.
+      `;
+      renderSourceList(els.promptSourceList, promptSources);
+    }
+
     function renderCopy() {
       const metricName = METRICS[state.metric];
       els.chartTitle.textContent = `${metricName}, faktisk vs forventet`;
@@ -3707,6 +4602,9 @@
       renderDataTable();
       renderDataSources();
       renderAiResources();
+      renderLifecycleMap();
+      renderLocationMap();
+      renderPromptScale();
       els.startYearLabel.textContent = state.startYear;
       els.endYearLabel.textContent = state.endYear;
     }
@@ -3730,6 +4628,27 @@
         if (!button) return;
         state.aiLens = button.dataset.aiLens;
         render();
+      });
+
+      els.lifecycleMap.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-lifecycle-phase]");
+        if (!button) return;
+        state.lifecyclePhase = button.dataset.lifecyclePhase;
+        renderLifecycleMap();
+      });
+
+      els.locationWorkloadControls.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-location-workload]");
+        if (!button) return;
+        state.locationWorkload = button.dataset.locationWorkload;
+        renderLocationMap();
+      });
+
+      els.promptProfileControls.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-prompt-profile]");
+        if (!button) return;
+        state.promptProfile = button.dataset.promptProfile;
+        renderPromptScale();
       });
 
       els.companyList.addEventListener("change", (event) => {
@@ -3793,6 +4712,9 @@
         window.requestAnimationFrame(() => {
           renderChart();
           renderDataCentreChart();
+          renderAiResources();
+          renderLocationMap();
+          renderPromptScale();
         });
       });
     }
